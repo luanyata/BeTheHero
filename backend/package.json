@@ -1,0 +1,31 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Api de acesso aos dados da Be The Hero",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "release": "standard-version"
+  },
+  "keywords": [],
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "author": "Luan Lima <luanyata@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "knex": "^0.20.13",
+    "sqlite3": "^4.1.1"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "husky": "^4.2.3",
+    "nodemon": "^2.0.2",
+    "standard-version": "^7.1.0"
+  }
+}
