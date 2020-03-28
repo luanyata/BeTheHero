@@ -2,10 +2,11 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "Api de acesso aos dados da Be The Hero",
-  "main": "src/index.js",
+  "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
-    "release": "standard-version"
+    "start": "nodemon src/server.js",
+    "release": "standard-version",
+    "test": "cross-env NODE_ENV=test jest"
   },
   "keywords": [],
   "husky": {
@@ -18,6 +19,7 @@
   "dependencies": {
     "celebrate": "^12.0.1",
     "cors": "^2.8.5",
+    "cross-env": "^7.0.2",
     "express": "^4.17.1",
     "knex": "^0.20.13",
     "sqlite3": "^4.1.1"
@@ -28,9 +30,11 @@
     "cz-conventional-changelog": "^3.1.0",
     "cz-emoji": "^1.2.1",
     "husky": "^4.2.3",
+    "mem": ">=4.0.0",
     "nodemon": "^2.0.2",
     "standard-version": "^7.1.0",
-    "mem": ">=4.0.0"
+    "jest": "^25.2.3",
+    "supertest": "^4.0.2"
   },
   "config": {
     "commitizen": {
