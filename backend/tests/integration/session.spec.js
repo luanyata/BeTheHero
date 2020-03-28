@@ -4,7 +4,7 @@ const connection = require("../../src/database/connection");
 
 const mock = require("./mock");
 
-describe("ONG", () => {
+describe("Session", () => {
   beforeEach(async () => {
     await connection.migrate.rollback();
     await connection.migrate.latest();
@@ -14,12 +14,17 @@ describe("ONG", () => {
     await connection.destroy();
   });
 
-  it("should be able to create a new ONG", async () => {
-    const response = await request(app)
+  it("should be able to session", async () => {
+    const dataOng = await request(app)
       .post("/ongs")
       .send(mock.ong());
 
-    expect(response.body).toHaveProperty("id");
-    expect(response.body.id).toHaveLength(8);
+    const ong_id = dataOng.body.id;
+
+    const response = await request(app)
+      .post("/session")
+      .send({ id: ong_id });
+
+    expect(response.body).toHaveProperty("name");
   });
 });
