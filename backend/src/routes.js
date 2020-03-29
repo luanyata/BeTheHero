@@ -1,9 +1,13 @@
 const express = require("express");
-const { celebrate, Segments, Joi } = require("celebrate");
 
 const routes = express.Router();
 
-const { ongValidation, profileValidation } = require("./validations");
+const {
+  incidentValidation,
+  ongValidation,
+  profileValidation,
+  sessionValidation
+} = require("./validations");
 
 const OngController = require("./controllers/OngController");
 const IncidentController = require("./controllers/IncidentController");
@@ -12,11 +16,7 @@ const SessionController = require("./controllers/SessionController");
 
 routes.post(
   "/session",
-  celebrate({
-    [Segments.BODY]: Joi.object().keys({
-      id: Joi.string().required()
-    })
-  }),
+  sessionValidation.createSession(),
   SessionController.create
 );
 
@@ -26,40 +26,19 @@ routes.post("/ongs", ongValidation.createOng(), OngController.create);
 
 routes.get(
   "/incidents",
-  celebrate({
-    [Segments.QUERY]: Joi.object().keys({
-      page: Joi.number()
-    })
-  }),
+  incidentValidation.listIncidents(),
   IncidentController.list
 );
 
 routes.post(
   "/incidents",
-  celebrate({
-    [Segments.HEADERS]: Joi.object({
-      authorization: Joi.string().required()
-    }).unknown(),
-    [Segments.BODY]: Joi.object().keys({
-      title: Joi.string()
-        .required()
-        .max(50),
-      description: Joi.string()
-        .required()
-        .max(255),
-      value: Joi.number()
-    })
-  }),
+  incidentValidation.createIncident(),
   IncidentController.create
 );
 
 routes.delete(
   "/incidents/:id",
-  celebrate({
-    [Segments.PARAMS]: Joi.object().keys({
-      id: Joi.string().required()
-    })
-  }),
+  incidentValidation.deleteIncident(),
   IncidentController.delete
 );
 
