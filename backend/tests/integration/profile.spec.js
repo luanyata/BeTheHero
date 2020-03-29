@@ -26,7 +26,7 @@ describe("Profile", () => {
     expect(response.body).toEqual([]);
   });
 
-  it("should be able to listing incidents", async () => {
+  it("should be able to listing incidents by profile", async () => {
     const dataOng = await request(app)
       .post("/ongs")
       .send(mock.ong());
