@@ -2,6 +2,9 @@ const express = require("express");
 const { celebrate, Segments, Joi } = require("celebrate");
 
 const routes = express.Router();
+
+const validate = require("./validations/ong.valodation");
+
 const OngController = require("./controllers/OngController");
 const IncidentController = require("./controllers/IncidentController");
 const ProfileController = require("./controllers/ProfileController");
@@ -19,24 +22,7 @@ routes.post(
 
 routes.get("/ongs", OngController.list);
 
-routes.post(
-  "/ongs",
-  celebrate({
-    [Segments.BODY]: Joi.object().keys({
-      name: Joi.string().required(),
-      email: Joi.string()
-        .required()
-        .email(),
-      whatsapp: Joi.string()
-        .required()
-        .min(10)
-        .max(11),
-      city: Joi.string().required(),
-      uf: Joi.string().length(2)
-    })
-  }),
-  OngController.create
-);
+routes.post("/ongs", validate.createOng(), OngController.create);
 
 routes.get(
   "/incidents",
