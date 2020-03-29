@@ -3,7 +3,7 @@ const { celebrate, Segments, Joi } = require("celebrate");
 
 const routes = express.Router();
 
-const validate = require("./validations/ong.valodation");
+const { ongValidation, profileValidation } = require("./validations");
 
 const OngController = require("./controllers/OngController");
 const IncidentController = require("./controllers/IncidentController");
@@ -22,7 +22,7 @@ routes.post(
 
 routes.get("/ongs", OngController.list);
 
-routes.post("/ongs", validate.createOng(), OngController.create);
+routes.post("/ongs", ongValidation.createOng(), OngController.create);
 
 routes.get(
   "/incidents",
@@ -65,11 +65,7 @@ routes.delete(
 
 routes.get(
   "/profile",
-  celebrate({
-    [Segments.HEADERS]: Joi.object({
-      authorization: Joi.string().required()
-    }).unknown()
-  }),
+  profileValidation.listIncidentsById(),
   ProfileController.listIncidentById
 );
 
