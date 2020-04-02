@@ -5,6 +5,10 @@ module.exports = {
     return celebrate({
       [Segments.BODY]: Joi.object().keys({
         name: Joi.string().required(),
+        login: Joi.string().required(),
+        password: Joi.string()
+          .required()
+          .min(8),
         email: Joi.string()
           .required()
           .email(),

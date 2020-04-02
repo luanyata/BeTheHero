@@ -1,7 +1,9 @@
 module.exports = {
   ong: () => {
     return {
-      name: "APAD",
+      name: "Instituto Voluntarios em Ação",
+      login: "IVA",
+      password: "luanyata",
       email: "contato@apad.com.br",
       whatsapp: "9999999999",
       city: "Florianopolis",

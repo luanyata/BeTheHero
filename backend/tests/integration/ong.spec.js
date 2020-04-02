@@ -22,4 +22,15 @@ describe("ONG", () => {
     expect(response.body).toHaveProperty("id");
     expect(response.body.id).toHaveLength(8);
   });
+
+  it("should be able to create Ong equals login", async () => {
+    await request(app)
+      .post("/ongs")
+      .send(mock.ong());
+
+    await request(app)
+      .post("/ongs")
+      .send(mock.ong())
+      .expect(400);
+  });
 });
