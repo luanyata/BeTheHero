@@ -1,8 +1,14 @@
 module.exports = {
+  user: () => {
+    return {
+      login: "iva",
+      password: "luanyata"
+    };
+  },
   ong: () => {
     return {
       name: "Instituto Voluntarios em Ação",
-      login: "IVA",
+      login: "iva",
       password: "luanyata",
       email: "contato@apad.com.br",
       whatsapp: "9999999999",

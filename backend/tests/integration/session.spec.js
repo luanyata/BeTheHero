@@ -15,15 +15,15 @@ describe("Session", () => {
   });
 
   it("should be able to session", async () => {
-    const dataOng = await request(app)
+    await request(app)
       .post("/ongs")
       .send(mock.ong());
 
-    const { login, password } = dataOng.body;
-
     const response = await request(app)
       .post("/session")
-      .send({ login, password });
+      .send(mock.user());
+
+    console.log(response.body);
 
     expect(response.body).toHaveProperty("name");
     expect(response.body).toHaveProperty("token");
