@@ -19,12 +19,13 @@ describe("Session", () => {
       .post("/ongs")
       .send(mock.ong());
 
-    const ong_id = dataOng.body.id;
+    const { login, password } = dataOng.body;
 
     const response = await request(app)
       .post("/session")
-      .send({ id: ong_id });
+      .send({ login, password });
 
     expect(response.body).toHaveProperty("name");
+    expect(response.body).toHaveProperty("token");
   });
 });
