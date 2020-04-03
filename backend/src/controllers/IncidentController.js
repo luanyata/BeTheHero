@@ -1,4 +1,5 @@
 const connection = require("../database/connection");
+const { extractJwt } = require("../utils/jwtToken");
 
 module.exports = {
   async list(request, response) {
@@ -27,7 +28,7 @@ module.exports = {
   async create(request, response) {
     const { title, description, value } = request.body;
 
-    const ong_id = request.headers.authorization;
+    const ong_id = extractJwt(request.headers.authorization).id;
 
     const [id] = await connection("incidents").insert({
       title,
@@ -35,12 +36,13 @@ module.exports = {
       value,
       ong_id
     });
+
     return response.json({ id });
   },
 
   async delete(request, response) {
     const { id } = request.params;
-    const ong_id = request.headers.authorization;
+    const ong_id = extractJwt(request.headers.authorization).id;
 
     const incident = await connection("incidents")
       .where("id", id)

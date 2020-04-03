@@ -23,8 +23,6 @@ describe("Session", () => {
       .post("/session")
       .send(mock.user());
 
-    console.log(response.body);
-
     expect(response.body).toHaveProperty("name");
     expect(response.body).toHaveProperty("token");
   });
