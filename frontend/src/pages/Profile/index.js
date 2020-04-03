@@ -14,24 +14,14 @@ function Profile() {
   const history = useHistory();
 
   useEffect(() => {
-    api
-      .get("profile", {
-        headers: {
-          Authorization: ongId
-        }
-      })
-      .then(response => {
-        setIncidents(response.data);
-      });
+    api.get("profile").then(response => {
+      setIncidents(response.data);
+    });
   }, [ongId]);
 
   async function handleDeleteIncident(id) {
     try {
-      await api.delete(`/incidents/${id}`, {
-        headers: {
-          Authorization: ongId
-        }
-      });
+      await api.delete(`/incidents/${id}`);
       setIncidents(incidents.filter(incident => incident.id !== id));
     } catch (err) {
       alert("Erro ao deletar caso, tente novamente");

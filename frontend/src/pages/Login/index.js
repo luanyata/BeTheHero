@@ -7,18 +7,20 @@ import api from "../../services/api";
 
 import logoImg from "../../assets/logo.svg";
 import heroesImg from "../../assets/heroes.png";
+import { USER_NAME, TOKEN } from "../../utils/storage-key";
 
 function Login() {
-  const [id, setId] = useState("");
+  const [login, setLogin] = useState("");
+  const [password, setPassword] = useState("");
   const history = useHistory();
 
   async function handleLogin(e) {
     e.preventDefault();
 
     try {
-      const response = await api.post("/session", { id });
-      localStorage.setItem("ongId", id);
-      localStorage.setItem("ongName", response.data.name);
+      const response = await api.post("/session", { login, password });
+      localStorage.setItem(USER_NAME, response.data.name);
+      localStorage.setItem(TOKEN, response.data.token);
 
       history.push("/profile");
     } catch (err) {
@@ -34,9 +36,15 @@ function Login() {
         <form onSubmit={handleLogin}>
           <h1>Faça seu login</h1>
           <input
-            placeholder="Sua ID"
-            value={id}
-            onChange={e => setId(e.target.value)}
+            placeholder="Login"
+            value={login}
+            onChange={e => setLogin(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="Senha"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
           />
           <button className="button" type="submit">
             Entrar
