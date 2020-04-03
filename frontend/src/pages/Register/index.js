@@ -10,6 +10,8 @@ import logoImg from "../../assets/logo.svg";
 
 function Register() {
   const [name, setName] = useState("");
+  const [login, setLogin] = useState("");
+  const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [whatsapp, setWhatsapp] = useState("");
   const [city, setCity] = useState("");
@@ -22,6 +24,8 @@ function Register() {
 
     const register = {
       name,
+      login,
+      password,
       email,
       whatsapp,
       city,
@@ -59,12 +63,27 @@ function Register() {
             value={name}
             onChange={e => setName(e.target.value)}
           />
+
+          <input
+            placeholder="Login"
+            value={login}
+            onChange={e => setLogin(e.target.value)}
+          />
+
           <input
             type="email"
             placeholder="E-mail"
             value={email}
             onChange={e => setEmail(e.target.value)}
           />
+
+          <input
+            placeholder="Senha"
+            type="password"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+          />
+
           <input
             placeholder="WhatsApp"
             value={whatsapp}
