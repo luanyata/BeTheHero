@@ -1,4 +1,5 @@
 const express = require("express");
+const { verifyJwt } = require("./utils/jwtToken");
 
 const routes = express.Router();
 
@@ -32,18 +33,21 @@ routes.get(
 
 routes.post(
   "/incidents",
+  verifyJwt,
   incidentValidation.createIncident(),
   IncidentController.create
 );
 
 routes.delete(
   "/incidents/:id",
+  verifyJwt,
   incidentValidation.deleteIncident(),
   IncidentController.delete
 );
 
 routes.get(
   "/profile",
+  verifyJwt,
   profileValidation.listIncidentsById(),
   ProfileController.listIncidentById
 );

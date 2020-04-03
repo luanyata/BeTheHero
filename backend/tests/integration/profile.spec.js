@@ -1,6 +1,7 @@
 const request = require("supertest");
 const app = require("../../src/app");
 const connection = require("../../src/database/connection");
+const { extractJwt } = require("../../src/utils/jwtToken");
 
 const mock = require("./mock");
 
@@ -15,34 +16,46 @@ describe("Profile", () => {
   });
 
   it("should be able to empy listing incidents", async () => {
-    const data = await request(app)
+    await request(app)
       .post("/ongs")
       .send(mock.ong());
 
+    const userSession = await request(app)
+      .post("/session")
+      .send(mock.user());
+
+    const { token } = userSession.body;
+
     const response = await request(app)
       .get("/profile")
-      .set("Authorization", data.body.id);
+      .set("Authorization", `Bearer ${token}`);
 
     expect(response.body).toEqual([]);
   });
 
   it("should be able to listing incidents by profile", async () => {
-    const dataOng = await request(app)
+    await request(app)
       .post("/ongs")
       .send(mock.ong());
 
-    const ong_id = dataOng.body.id;
+    const userSession = await request(app)
+      .post("/session")
+      .send(mock.user());
+
+    const { token } = userSession.body;
 
     const dataIncident = await request(app)
       .post("/incidents")
-      .set("Authorization", ong_id)
+      .set("Authorization", `Bearer ${token}`)
       .send(mock.incident());
 
-    const id = dataIncident.body.id;
+    const { id } = dataIncident.body;
+
+    const ong_id = extractJwt(token).id;
 
     const response = await request(app)
       .get("/profile")
-      .set("Authorization", ong_id);
+      .set("Authorization", `Bearer ${token}`);
 
     expect(response.body).toEqual([{ id, ong_id, ...mock.incident() }]);
   });

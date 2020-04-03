@@ -15,16 +15,15 @@ describe("Session", () => {
   });
 
   it("should be able to session", async () => {
-    const dataOng = await request(app)
+    await request(app)
       .post("/ongs")
       .send(mock.ong());
 
-    const ong_id = dataOng.body.id;
-
     const response = await request(app)
       .post("/session")
-      .send({ id: ong_id });
+      .send(mock.user());
 
     expect(response.body).toHaveProperty("name");
+    expect(response.body).toHaveProperty("token");
   });
 });

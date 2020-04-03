@@ -1,8 +1,14 @@
 module.exports = {
+  user: () => {
+    return {
+      login: "iva",
+      password: "luanyata"
+    };
+  },
   ong: () => {
     return {
       name: "Instituto Voluntarios em Ação",
-      login: "IVA",
+      login: "iva",
       password: "luanyata",
       email: "contato@apad.com.br",
       whatsapp: "9999999999",
@@ -22,7 +28,7 @@ module.exports = {
       title: "Aquisicao de Mascaras ",
       description: "Aquisicao de mascaras contra o Covid19",
       value: 100,
-      name: "APAD",
+      name: "Instituto Voluntarios em Ação",
       email: "contato@apad.com.br",
       whatsapp: "9999999999",
       city: "Florianopolis",

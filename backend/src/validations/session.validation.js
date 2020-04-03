@@ -4,7 +4,10 @@ module.exports = {
   createSession: () => {
     return celebrate({
       [Segments.BODY]: Joi.object().keys({
-        id: Joi.string().required()
+        login: Joi.string().required(),
+        password: Joi.string()
+          .required()
+          .min(8)
       })
     });
   }

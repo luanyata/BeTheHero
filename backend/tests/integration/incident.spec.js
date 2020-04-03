@@ -1,6 +1,7 @@
 const request = require("supertest");
 const app = require("../../src/app");
 const connection = require("../../src/database/connection");
+const { extractJwt } = require("../../src/utils/jwtToken");
 
 const mock = require("./mock");
 
@@ -23,15 +24,21 @@ describe("Incidents", () => {
   });
 
   it("should be able to list incident", async () => {
-    const dataOng = await request(app)
+    await request(app)
       .post("/ongs")
       .send(mock.ong());
 
-    const ong_id = dataOng.body.id;
+    const userSession = await request(app)
+      .post("/session")
+      .send(mock.user());
+
+    const { token } = userSession.body;
+
+    const ong_id = await extractJwt(token).id;
 
     const incident = await request(app)
       .post("/incidents")
-      .set("Authorization", ong_id)
+      .set("authorization", `Bearer ${token}`)
       .send(mock.incident());
 
     const id = incident.body.id;
@@ -42,36 +49,78 @@ describe("Incidents", () => {
   });
 
   it("should be able to create incident", async () => {
-    const ongRes = await request(app)
+    await request(app)
       .post("/ongs")
       .send(mock.ong());
 
-    const ong_id = ongRes.body.id;
+    const userSession = await request(app)
+      .post("/session")
+      .send(mock.user());
+
+    const { token } = userSession.body;
 
     const response = await request(app)
       .post("/incidents")
-      .set("Authorization", ong_id)
+      .set("authorization", `Bearer ${token}`)
       .send(mock.incident());
 
     expect(response.body).toHaveProperty("id");
-    expect(typeof response.body.id).toEqual("number");
   });
 
-  it("should be able to delete incident", async () => {
-    const ongRes = await request(app)
+  it("should be able to create incident user not token", async () => {
+    await request(app)
       .post("/ongs")
       .send(mock.ong());
 
-    const ong_id = ongRes.body.id;
+    await request(app)
+      .post("/session")
+      .send(mock.user());
+
+    const response = await request(app)
+      .post("/incidents")
+      .send(mock.incident())
+      .expect(401);
+
+    expect(response.body).toEqual({ err: "No token provided." });
+  });
+
+  it("should be able to create incident failed to authentication", async () => {
+    await request(app)
+      .post("/ongs")
+      .send(mock.ong());
+
+    await request(app)
+      .post("/session")
+      .send(mock.user());
+
+    const response = await request(app)
+      .post("/incidents")
+      .set("authorization", "321321321")
+      .send(mock.incident())
+      .expect(500);
+
+    expect(response.body).toEqual({ err: "Failed to authentication." });
+  });
+
+  it("should be able to delete incident", async () => {
+    await request(app)
+      .post("/ongs")
+      .send(mock.ong());
+
+    const userSession = await request(app)
+      .post("/session")
+      .send(mock.user());
+
+    const { token } = userSession.body;
 
     const incidentRes = await request(app)
       .post("/incidents")
-      .set("Authorization", ong_id)
+      .set("Authorization", `Bearer ${token}`)
       .send(mock.incident());
 
     await request(app)
       .delete(`/incidents/${incidentRes.body.id}`)
-      .set("Authorization", ong_id)
+      .set("Authorization", `Bearer ${token}`)
       .expect(204);
   });
 });
