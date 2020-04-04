@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Login /> should to render the <Login /> component 1`] = `
+"<MemoryRouter>
+  <Router history={{...}}>
+    <Login>
+      <div className=\\"login-container\\">
+        <section className=\\"form\\">
+          <img src=\\"logo.svg\\" alt=\\"Be The Hero\\" />
+          <form onSubmit={[Function: handleLogin]}>
+            <h1>
+              Faça seu login
+            </h1>
+            <input placeholder=\\"Login\\" value=\\"\\" onChange={[Function: onChange]} />
+            <input type=\\"password\\" placeholder=\\"Senha\\" value=\\"\\" onChange={[Function: onChange]} />
+            <button className=\\"button\\" type=\\"submit\\">
+              Entrar
+            </button>
+            <Link to=\\"/register\\" className=\\"back-link\\">
+              <LinkAnchor className=\\"back-link\\" href=\\"/register\\" navigate={[Function: navigate]}>
+                <a className=\\"back-link\\" href=\\"/register\\" onClick={[Function: onClick]}>
+                  <FiLogIn size={16} color=\\"#E02041\\">
+                    <IconBase attr={{...}} size={16} color=\\"#E02041\\">
+                      <svg stroke=\\"currentColor\\" fill=\\"none\\" strokeWidth=\\"2\\" viewBox=\\"0 0 24 24\\" strokeLinecap=\\"round\\" strokeLinejoin=\\"round\\" size={16} color=\\"#E02041\\" className={[undefined]} style={{...}} height={16} width={16} xmlns=\\"http://www.w3.org/2000/svg\\">
+                        <path d=\\"M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4\\" />
+                        <polyline points=\\"10 17 15 12 10 7\\" />
+                        <line x1=\\"15\\" y1=\\"12\\" x2=\\"3\\" y2=\\"12\\" />
+                      </svg>
+                    </IconBase>
+                  </FiLogIn>
+                  Não tenho cadastro
+                </a>
+              </LinkAnchor>
+            </Link>
+          </form>
+        </section>
+        <img src=\\"heroes.png\\" alt=\\"Heroes\\" />
+      </div>
+    </Login>
+  </Router>
+</MemoryRouter>"
+`;

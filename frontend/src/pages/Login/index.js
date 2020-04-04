@@ -38,13 +38,13 @@ function Login() {
           <input
             placeholder="Login"
             value={login}
-            onChange={e => setLogin(e.target.value)}
+            onChange={(e) => setLogin(e.target.value)}
           />
           <input
             type="password"
             placeholder="Senha"
             value={password}
-            onChange={e => setPassword(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
           />
           <button className="button" type="submit">
             Entrar

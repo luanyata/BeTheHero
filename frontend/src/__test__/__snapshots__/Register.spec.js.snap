@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Register /> should to render the <Register /> component 1`] = `
+"<MemoryRouter>
+  <Router history={{...}}>
+    <Register>
+      <div className=\\"register-container\\">
+        <div className=\\"content\\">
+          <section>
+            <img src=\\"logo.svg\\" alt=\\"Be The Hero\\" />
+            <h1>
+              Cadastro
+            </h1>
+            <p>
+              Faça seu cadastro, entre na plataforma e ajude pessoas a encontrarem os casos da sua ONG.
+            </p>
+            <Link to=\\"/\\" className=\\"back-link\\">
+              <LinkAnchor className=\\"back-link\\" href=\\"/\\" navigate={[Function: navigate]}>
+                <a className=\\"back-link\\" href=\\"/\\" onClick={[Function: onClick]}>
+                  <FiArrowLeft size={16} color=\\"#E02041\\">
+                    <IconBase attr={{...}} size={16} color=\\"#E02041\\">
+                      <svg stroke=\\"currentColor\\" fill=\\"none\\" strokeWidth=\\"2\\" viewBox=\\"0 0 24 24\\" strokeLinecap=\\"round\\" strokeLinejoin=\\"round\\" size={16} color=\\"#E02041\\" className={[undefined]} style={{...}} height={16} width={16} xmlns=\\"http://www.w3.org/2000/svg\\">
+                        <line x1=\\"19\\" y1=\\"12\\" x2=\\"5\\" y2=\\"12\\" />
+                        <polyline points=\\"12 19 5 12 12 5\\" />
+                      </svg>
+                    </IconBase>
+                  </FiArrowLeft>
+                  Não tenho cadastro
+                </a>
+              </LinkAnchor>
+            </Link>
+          </section>
+          <form onSubmit={[Function: handleRegister]}>
+            <input placeholder=\\"Nome da ONG\\" value=\\"\\" onChange={[Function: onChange]} />
+            <input placeholder=\\"Login\\" value=\\"\\" onChange={[Function: onChange]} />
+            <input type=\\"email\\" placeholder=\\"E-mail\\" value=\\"\\" onChange={[Function: onChange]} />
+            <input placeholder=\\"Senha\\" type=\\"password\\" value=\\"\\" onChange={[Function: onChange]} />
+            <input placeholder=\\"WhatsApp\\" value=\\"\\" onChange={[Function: onChange]} />
+            <div className=\\"input-group\\">
+              <input placeholder=\\"Cidade\\" value=\\"\\" onChange={[Function: onChange]} />
+              <input placeholder=\\"UF\\" style={{...}} value=\\"\\" onChange={[Function: onChange]} />
+            </div>
+            <button className=\\"button\\" type=\\"submit\\">
+              Cadastrar
+            </button>
+          </form>
+        </div>
+      </div>
+    </Register>
+  </Router>
+</MemoryRouter>"
+`;

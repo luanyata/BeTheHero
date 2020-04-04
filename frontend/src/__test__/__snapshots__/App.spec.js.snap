@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<App /> should to render the <App /> component 1`] = `"<Routes />"`;

@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NewIncidant/> should to render the <NewIncident /> component 1`] = `
+"<MemoryRouter>
+  <Router history={{...}}>
+    <NewIncident>
+      <div className=\\"new-incident-container\\">
+        <div className=\\"content\\">
+          <section>
+            <img src=\\"logo.svg\\" alt=\\"Be The Hero\\" />
+            <h1>
+              Cadastrar novo caso
+            </h1>
+            <p>
+              Descreva o caso detalhadamente para encontrar uma herói para resolver isso.
+            </p>
+            <Link to=\\"/profile\\" className=\\"back-link\\">
+              <LinkAnchor className=\\"back-link\\" href=\\"/profile\\" navigate={[Function: navigate]}>
+                <a className=\\"back-link\\" href=\\"/profile\\" onClick={[Function: onClick]}>
+                  <FiArrowLeft size={16} color=\\"#E02041\\">
+                    <IconBase attr={{...}} size={16} color=\\"#E02041\\">
+                      <svg stroke=\\"currentColor\\" fill=\\"none\\" strokeWidth=\\"2\\" viewBox=\\"0 0 24 24\\" strokeLinecap=\\"round\\" strokeLinejoin=\\"round\\" size={16} color=\\"#E02041\\" className={[undefined]} style={{...}} height={16} width={16} xmlns=\\"http://www.w3.org/2000/svg\\">
+                        <line x1=\\"19\\" y1=\\"12\\" x2=\\"5\\" y2=\\"12\\" />
+                        <polyline points=\\"12 19 5 12 12 5\\" />
+                      </svg>
+                    </IconBase>
+                  </FiArrowLeft>
+                  Voltar para Home
+                </a>
+              </LinkAnchor>
+            </Link>
+          </section>
+          <form onSubmit={[Function: handleNewIncident]}>
+            <input placeholder=\\"Titulo do caso\\" value=\\"\\" onChange={[Function: onChange]} />
+            <textarea placeholder=\\"Descrição\\" value=\\"\\" onChange={[Function: onChange]} />
+            <input placeholder=\\"Valor em reais\\" value=\\"\\" onChange={[Function: onChange]} />
+            <button className=\\"button\\" type=\\"submit\\">
+              Cadastrar
+            </button>
+          </form>
+        </div>
+      </div>
+    </NewIncident>
+  </Router>
+</MemoryRouter>"
+`;

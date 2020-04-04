@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Profile /> should to render the <Profile /> component 1`] = `
+"<MemoryRouter>
+  <Router history={{...}}>
+    <Profile>
+      <div className=\\"profile-container\\">
+        <header>
+          <img src=\\"logo.svg\\" alt=\\"Be the Hero\\" />
+          <span>
+            Bem Vinda, 
+          </span>
+          <Link className=\\"button\\" to=\\"/incidents/new\\">
+            <LinkAnchor className=\\"button\\" href=\\"/incidents/new\\" navigate={[Function: navigate]}>
+              <a className=\\"button\\" href=\\"/incidents/new\\" onClick={[Function: onClick]}>
+                Cadastrar novo caso
+              </a>
+            </LinkAnchor>
+          </Link>
+          <button>
+            <FiPower sizr={18} color=\\"#E02041\\" onClick={[Function: handleLogout]}>
+              <IconBase attr={{...}} sizr={18} color=\\"#E02041\\" onClick={[Function: handleLogout]}>
+                <svg stroke=\\"currentColor\\" fill=\\"none\\" strokeWidth=\\"2\\" viewBox=\\"0 0 24 24\\" strokeLinecap=\\"round\\" strokeLinejoin=\\"round\\" sizr={18} color=\\"#E02041\\" onClick={[Function: handleLogout]} className={[undefined]} style={{...}} height=\\"1em\\" width=\\"1em\\" xmlns=\\"http://www.w3.org/2000/svg\\">
+                  <path d=\\"M18.36 6.64a9 9 0 1 1-12.73 0\\" />
+                  <line x1=\\"12\\" y1=\\"2\\" x2=\\"12\\" y2=\\"12\\" />
+                </svg>
+              </IconBase>
+            </FiPower>
+          </button>
+        </header>
+        <h1>
+          Casos Cadastrados
+        </h1>
+        <ul />
+      </div>
+    </Profile>
+  </Router>
+</MemoryRouter>"
+`;
