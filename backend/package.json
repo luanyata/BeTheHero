@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon src/server.js",
     "release": "standard-version",
-    "test": "cross-env NODE_ENV=test jest"
+    "test": "cross-env NODE_ENV=test jest --coverage"
   },
   "keywords": [],
   "husky": {
