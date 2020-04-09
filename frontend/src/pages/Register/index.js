@@ -14,8 +14,14 @@ function Register() {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [whatsapp, setWhatsapp] = useState("");
+  const [street, setStreet] = useState("");
+  const [numberAddress, setNumberAddress] = useState("");
+  const [complement, setComplement] = useState("");
+  const [neighborhood, setNeighborhood] = useState("");
   const [city, setCity] = useState("");
+  const [zip, setZip] = useState("");
   const [uf, setUf] = useState("");
+  const [country, setCountry] = useState("");
 
   const history = useHistory();
 
@@ -28,8 +34,14 @@ function Register() {
       password,
       email,
       whatsapp,
+      street,
+      numberAddress,
+      complement,
+      neighborhood,
       city,
-      uf
+      zip,
+      uf,
+      country,
     };
 
     try {
@@ -61,47 +73,91 @@ function Register() {
           <input
             placeholder="Nome da ONG"
             value={name}
-            onChange={e => setName(e.target.value)}
+            onChange={(e) => setName(e.target.value)}
           />
 
           <input
             placeholder="Login"
             value={login}
-            onChange={e => setLogin(e.target.value)}
-          />
-
-          <input
-            type="email"
-            placeholder="E-mail"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
+            onChange={(e) => setLogin(e.target.value)}
           />
 
           <input
             placeholder="Senha"
             type="password"
             value={password}
-            onChange={e => setPassword(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
           />
 
+          <div className="input-group">
+            <input
+              type="email"
+              placeholder="E-mail"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+
+            <input
+              placeholder="WhatsApp"
+              value={whatsapp}
+              onChange={(e) => setWhatsapp(e.target.value)}
+            />
+          </div>
+
+          <div className="input-group">
+            <input
+              placeholder="Rua"
+              value={street}
+              onChange={(e) => setStreet(e.target.value)}
+            />
+            <input
+              placeholder="Num."
+              style={{ width: 150 }}
+              value={numberAddress}
+              onChange={(e) => setNumberAddress(e.target.value)}
+            />
+          </div>
           <input
-            placeholder="WhatsApp"
-            value={whatsapp}
-            onChange={e => setWhatsapp(e.target.value)}
+            placeholder="Complemento"
+            value={complement}
+            onChange={(e) => setComplement(e.target.value)}
           />
+
+          <div className="input-group">
+            <input
+              placeholder="Bairro"
+              value={neighborhood}
+              onChange={(e) => setNeighborhood(e.target.value)}
+            />
+
+            <input
+              placeholder="CEP"
+              style={{ width: 150 }}
+              value={zip}
+              onChange={(e) => setZip(e.target.value)}
+            />
+          </div>
+
           <div className="input-group">
             <input
               placeholder="Cidade"
               value={city}
-              onChange={e => setCity(e.target.value)}
+              onChange={(e) => setCity(e.target.value)}
             />
+
             <input
               placeholder="UF"
               style={{ width: 80 }}
               value={uf}
-              onChange={e => setUf(e.target.value)}
+              onChange={(e) => setUf(e.target.value)}
             />
           </div>
+
+          <input
+            placeholder="País"
+            value={country}
+            onChange={(e) => setCountry(e.target.value)}
+          />
 
           <button className="button" type="submit">
             Cadastrar
