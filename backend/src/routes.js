@@ -7,7 +7,7 @@ const {
   incidentValidation,
   ongValidation,
   profileValidation,
-  sessionValidation
+  sessionValidation,
 } = require("./validations");
 
 const OngController = require("./controllers/OngController");

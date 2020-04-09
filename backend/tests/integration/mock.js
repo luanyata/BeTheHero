@@ -2,7 +2,7 @@ module.exports = {
   user: () => {
     return {
       login: "iva",
-      password: "luanyata"
+      password: "luanyata",
     };
   },
   ong: () => {
@@ -12,15 +12,21 @@ module.exports = {
       password: "luanyata",
       email: "contato@apad.com.br",
       whatsapp: "9999999999",
+      street: "Servidão Joaquim Soares",
+      numberAddress: "200",
+      complement: "Casa",
+      neighborhood: "Itacorubi",
+      zip: "88034-240",
       city: "Florianopolis",
-      uf: "SC"
+      uf: "SC",
+      country: "Brasil",
     };
   },
   incident: () => {
     return {
       title: "Aquisicao de Mascaras ",
       description: "Aquisicao de mascaras contra o Covid19",
-      value: 100.0
+      value: 100.0,
     };
   },
   incidentDB: () => {
@@ -32,7 +38,7 @@ module.exports = {
       email: "contato@apad.com.br",
       whatsapp: "9999999999",
       city: "Florianopolis",
-      uf: "SC"
+      uf: "SC",
     };
-  }
+  },
 };
