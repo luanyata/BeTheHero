@@ -16,9 +16,15 @@ module.exports = {
           .required()
           .min(10)
           .max(11),
+        street: Joi.string().required(),
+        numberAddress: Joi.string(),
+        complement: Joi.string(),
+        neighborhood: Joi.string().required(),
         city: Joi.string().required(),
-        uf: Joi.string().length(2)
-      })
+        zip: Joi.string().required(),
+        uf: Joi.string().length(2),
+        country: Joi.string().required(),
+      }),
     });
-  }
+  },
 };

@@ -16,8 +16,14 @@ module.exports = {
         "ongs.name",
         "ongs.email",
         "ongs.whatsapp",
+        "ongs.street",
+        "ongs.numberAddress",
+        "ongs.complement",
+        "ongs.neighborhood",
         "ongs.city",
-        "ongs.uf"
+        "ongs.zip",
+        "ongs.uf",
+        "ongs.country",
       ]);
 
     response.header("X-Total-Count", count["count(*)"]);
@@ -34,7 +40,7 @@ module.exports = {
       title,
       description,
       value,
-      ong_id
+      ong_id,
     });
 
     return response.json({ id });
@@ -58,5 +64,5 @@ module.exports = {
       .delete();
 
     return response.status(204).send();
-  }
+  },
 };

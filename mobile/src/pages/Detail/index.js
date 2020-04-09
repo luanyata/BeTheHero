@@ -22,7 +22,7 @@ function Detail() {
     MailComposer({
       subject: `Herói do caso: ${incident.title}`,
       recipients: [incident.email],
-      body: message
+      body: message,
     });
   }
 
@@ -30,6 +30,27 @@ function Detail() {
     Linking.openURL(
       `whatsapp://send?phone=${incident.whatsapp}&text=${message}`
     );
+  }
+
+  function openMaps() {
+    const {
+      street,
+      numberAddress,
+      complement,
+      neighborhood,
+      city,
+      zip,
+      uf,
+      country,
+    } = incident;
+
+    const address = `${street}, ${numberAddress},${complement},${neighborhood},${city},${zip}, ${uf}, ${country}`;
+
+    const url = Platform.select({
+      ios: `maps:${address}`,
+      android: `geo:${address}?center=${address}&q=${address}&z=16`,
+    });
+    Linking.openURL(url);
   }
 
   return (
@@ -53,7 +74,7 @@ function Detail() {
         <Text style={styles.incidentValue}>
           {Intl.NumberFormat("pt-BR", {
             style: "currency",
-            currency: "BRL"
+            currency: "BRL",
           }).format(incident.value)}
         </Text>
       </View>
@@ -71,6 +92,10 @@ function Detail() {
 
           <TouchableOpacity style={styles.action} onPress={sendMail}>
             <Text style={styles.actionText}>E-mail</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.action} onPress={openMaps}>
+            <Text style={styles.actionText}>Local</Text>
           </TouchableOpacity>
         </View>
       </View>

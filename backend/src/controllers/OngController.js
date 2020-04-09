@@ -9,7 +9,21 @@ module.exports = {
     return response.json(ongs);
   },
   async create(request, response) {
-    let { name, login, password, email, whatsapp, city, uf } = request.body;
+    let {
+      name,
+      login,
+      password,
+      email,
+      whatsapp,
+      street,
+      numberAddress,
+      complement,
+      neighborhood,
+      city,
+      zip,
+      uf,
+      country,
+    } = request.body;
 
     password = md5(password);
     const id = generateUniqueId();
@@ -22,13 +36,19 @@ module.exports = {
         password,
         email,
         whatsapp,
+        street,
+        numberAddress,
+        complement,
+        neighborhood,
         city,
-        uf
+        zip,
+        uf,
+        country,
       });
     } catch (err) {
       return response.status(400).json({ err });
     }
 
     return response.json({ id });
-  }
+  },
 };
